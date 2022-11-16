@@ -1,1 +1,113 @@
 \chapter{Estado del Arte}\label{chapter:state-of-the-art}
+
+\section{Reposicionamiento de medicamentos}
+
+La reutilización de medicamentos, también conocida como reposicionamiento, es una estrategia que busca nuevos tratamientos médicos entre los medicamentos con licencia ya existentes, en lugar del desarrollo de nuevas moléculas [\cite{repurposingconcept}]. Esta técnica ofrece numerosas ventajas en contraste, en términos de desarrollo [\cite{redo}]:
+\begin{itemize}
+    \item Disponibilidad de datos de farmacocinética, farmacodinámica y posología
+    \item Conocimiento de seguridad y toxicidad, incluidos los efectos adversos
+    \item Experiencia clínica derivada de las indicaciones originales
+    \item Bajo costo, en particular para el caso de medicamentos genéricos con múltiples fabricantes
+    \item Comprensión de los mecanismos de acción y/o \textit{targets} moleculares.
+\end{itemize}
+Existen numerosos ejemplos de reposicionamiento de medicamentos de forma exitosa en el pasado, como es el caso de los siguientes [\cite{drexamples}, \cite{drexamples2}]:
+\begin{description}
+    \item[Aspirina] Comercializada inicialmente en 1899 como analgésico, es reposicionada por primera vez en la década de 1980 como un fármaco antiagregante plaquetario para prevenir eventos cardiovasculares
+    \item[Talidomida] Prescrito en 1950 para el tratamiento de las náuseas y el insomnio en mujeres embarazadas y posteriormente aprobado para el tratamiento de la lepra.
+    \item[Citrato de sildenalfilo] Desarrollado originalmente como un medicamento antihipertensivo, y luego reutilizado por Pfizer y comercializado como Viagra para el tratamiento de la disfunción eréctil.
+    \item[Dimetilfumarato] Durante años, solo se conoció como un inhibidor de moho para proteger el cuero y como causa de alergias.Se ha comercializado como medicamento desde 1994, para tratar la psoriasis. Teniendo en cuenta su actividad antiinflamatoria, se propuso su uso en otra enfermedad autoinmune, la esclerosis múltiple. Se comercializó para esta última indicación a partir de 2013.
+    \item[Finesterida] Originalmente recetado para tratar el agrandamiento de la próstata y luego, para curar la pérdida de cabello.
+    \item[Clorpromazina] Desarrollada en un principio como antihistamínico, se comercializó posteriormente como sedante y antiemético.
+    \item[Azidotimidina] Usada en el tratamiento del cáncer, ahora se reutiliza como una terapia contra el VIH
+\end{description}
+
+Como se puede apreciar, la reutilización de medicamentos no constituye una idea nueva en el campo de la medicina; sin embargo, como estrategia explícita de desarrollo, ha tenido auge en los últimos años. De hecho, datos obtenidos de \textit{PubMed} muestran que el número de publicaciones relacionadas con el reposicionamiento de medicamentos ha aumentado de forma exponencial desde 2004 [\cite{advances}]. Esto se debe, en parte, a la acumulación de grandes volúmenes de datos que permiten la implementación de enfoques computacionales. Las fuentes de información populares incluyen: registros de salud electrónicos, análisis de asociación de todo el genoma o perfiles de expresión génica, estructuras compuestas y otros datos de perfiles fenotípicos. La tabla (AÑADIR REFERENCIA A TABLA) muestra algunas de las bases de datos utilizadas con mayor frecuencia en la actualidad [\cite{databases}].
+
+\section{Enfoques computacionales para el reposicionamiento de medicamentos}
+
+El problema principal en el reposicionamiento de medicamentos es la detección de nuevas relaciones entre medicamentos y enfermedades. Para abordar dicho problema, se han desarrollado una variedad de enfoques que incluyen enfoques computacionales, enfoques experimentales biológicos y enfoques mixtos. [\cite{hanqing}]
+
+Dado el crecimiento de la cantidad de datos biomédicos y farmacéuticos a gran escala disponibles públicamente, los enfoques computacionales que utilizan minería de datos, aprendizaje automático y análisis de redes se vuelven cada vez más importantes [\cite{jarada}]. Se pudiera asumir que los ensayos experimentales biológicos son más confiables y predictivos en comparación; sin embargo, las condiciones de experimentación, la cantidad de concentraciones probadas y la cantidad de repeticiones pueden influir en la precisión de los resultados. Además, en contraste, los enfoques computacionales son de menor costo y presentan menos limitaciones. [\cite{oprea}]
+
+\subsection{Clasificación de los enfoques computacionales}
+Los enfoques computacionales existentes pueden ser clasificados de diferentes formas de acuerdo a distintos puntos de vista. Por ejemplo, algunos investigadores los agrupan de acuerdo a las redes biológicas utilizadas: redes de interacción molecular, redes reguladoras de genes, redes metabólicas, redes de interacción entre proteínas, entre otras [\cite{lotfi}]. Otra clasificación, que se enfoca en los modelos y metodologías utilizadas durante el reposicionamiento, es: métodos basados en datos y basados en hipótesis [\cite{zou}], aunque esta clasificación general puede ser aplicada a cualquier enfoque computacional. De acuerdo a las metodologías centrales utilizadas, se han dividido también en tres categorías: enfoques basados en redes, enfoques de minería de texto y enfoques semánticos [\cite{koromina}]. Este trabajo abordará la última clasificación mencionada.
+
+\subsubsection{Enfoques basados en redes}
+Los métodos basados en redes se pueden dividir en: enfoques de agrupamiento (\textit{clustering}) y enfoques de propagación [\cite{hanqing}].
+
+El propósito de los enfoques de agrupamiento basados en redes es el descubrimiento de nuevas relaciones de tipo fármaco-enfermedad o fármaco-objetivo en grupos más pequeños dentro de una red más grande. Están basados en la idea de que entidades biológicas (enfermedades, medicamentos, proteínas, etc.) que pertenecen al mismo módulo de redes, comparten características similares. Por tanto, utilizan algoritmos de \textit{cluster} para encontrar diferentes subredes(también conocidas como grupos o cliques).
+
+Por otra parte, los enfoques de propagación están basados en el flujo de conocimiento adquirido previamente a través de las diferentes capas de una red. Estos parecen ser bastante efectivos para la identificación de interconexiones de interés [\cite{emig}]. De acuerdo a la forma en que se trata la red para la obtención de información, los métodos basados en propagación se separan igualmente en dos categorías: enfoques locales, centrados en secciones de la red, y enfoques globales, que examinan la red en su totalidad. Los enfoques de propagación local toman en cuenta una cantidad de información limitada de la red, por consiguiente, fallan en algunos casos a la hora de realizar predicciones correctas [\cite{emig}]. Por el contrario, los segundos presentan un mejor desempeño.
+
+\subsubsection{Enfoques basados en minería de textos}
+Los enfoques basados en minería de textos explotan la gran cantidad de literatura disponible, que es filtrada posteriormente para retener solo las fuentes relevantes y extraer de ellas conocimiento para un conjunto de términos biológicos de interés. El origen de estos métodos en el campo médico se describe como el método "ABC" [\cite{weeber}]. La idea consiste en que al examinar los conceptos A, B y C, donde el concepto A está relacionado con B y B con C, es posible que exista también una conexión entre A y C. Basados en este modelo, varios métodos de minería de texto han sido propuestos para encontrar posibles relaciones enfermedad-medicamento en la literatura. Igualmente, el desarrollo de técnicas de procesamiento de lenguaje natural (\textit{NLP - Natural Language Processing}), ha influido en el incremento de la implementación de herramientas para llevar a cabo este enfoque (véase [\cite{miningapps1}, \cite{miningapps2}])
+
+Un estudio reciente por Andronis et al. [\cite{mining}] resume varios enfoques y fuentes en el campo de minería de textos para el reposicionamiento de medicamentos.
+
+Las herramientas de minería de texto reducen la complejidad temporal del reposicionamiento de medicamentos y ayuda a los investigadores a verificar sus resultados experimentales devolviendo masivas cantidades de relaciones de entidades biológicas. Sin embargo, presenta ciertas desventajas, como es el problema de cobertura limitada. Este se debe a que entidades biomédicas o relaciones parcialmente importantes tales como mutaciones, objetivos y fármacos no son considerados.
+
+\subsubsection{Enfoques semánticos}
+
+
+\section{Grafos de conocimiento}
+
+13
+ This example illustrates how knowledge graphs can be
+used to manage, explore, and navigate through the interactions
+and connections between disparate pieces of information to
+gain insights and make predictions. As a result of their value,
+knowledge graphs have grown in importance in the last 10
+years in both industry and academia.7
+
+In addition to their strengths, knowledge graphs have some
+of the same limitations common to all data management
+systems. For instance, by linking modules in a complex
+network, they may give the false visual impression that they
+contain a complete picture of what is known about a subject.
+However, knowledge is always incomplete, so like all databases,
+they must be maintained and periodically updated. Furthermore, the power of a graph depends on the quality and
+comprehensiveness of the data sources used to build it.
+
+The advantages of knowledge graphs have become more widely known in the last 10 years. Most importantly, and beyond their use just as an information management system, knowledge graphs allow users to grasp information in a visual and intuitive way. Users can easily zoom in on specific modules, or subsets, of a large data set and then zoom back out to see how that subset fits in with the whole of the data. They can visually navigate through the pathways connecting data to see how modules, including nonadjacent ones, affect each other. This allows users a different perspective on a research problem. Another important advantage of knowledge graphs is that because they are both modular and flexible, data sources can be substituted in and out, such as was done here by adding COVID-19 clinical trial data to the CAS graph
+
+
+Drug repurposing with knowledge graphs, as first described
+by Ashburn & Thor (2004), is the current state-of-the-art
+approach for finding possible treatments for novel diseases
+among known drugs using machine learning. Applying drug
+repurposing allows for a better way to maneuver through
+the pandemic. It can lead to better treatments for patients
+infected with one of the COVID-19 strains and a better understanding of the characteristics of the individual strains.
+Today, we approach the problem of drug repurposing using machine learning, focusing on deep learning methods.
+The idea of predicting unknown links between entities in
+a knowledge graph is traditionally known as Collaborative Filtering, as described by Sarwar et al. (2001). In
+this work we expand on the concept of graph embeddings,
+which map a fixed-size feature vectors to graph nodes and
+relations. A state-of-the-art technique for the creation of
+such embeddings based on deep neural networks (DNNs) is
+TRANSE (Bordes et al., 2013).
+Knowledge graph embeddings are already utilized to solve
+different tasks related to drug discovery, e.g., they are used
+to predict potential drug targets for diseases to reduce cost
+and increase speed in the drug development process in general (Ye et al., 2021). Regarding the specific application of
+drug repurposing relying on edge prediction in a knowledge
+graph of biomedical data (see Section 2), Gysi et al. (2020)
+present a novel classification approach to this problem by
+implementing and merging various different ideas and techniques into one ensemble classifier. At its core, they deploy
+a DNN with an encoder-decoder structure. The encoder
+mechanism of it, which is based on the Decagon graph neural network by Zitnik et al. (2018), was initially proposed
+for the prediction of side effects of concurrent drug use.
+
+\section{Aprendizaje profundo}
+
+10
+On the
+other hand, deep learning[12] has achieved remarkable success in a wide range of complex tasks,
+including natural language processing,[13] speech recognition[14] and computer vision.[15] Recently,
+deep learning methods have also started to be applied to drug repurposing.[16],[17] Different from
+traditional machine learning techniques, the strength of deep learning lies in its ability to learn
+complex relationships between input features and output decisions from large-scale data, helped by
+the continuous increase of computing power from hardware equipment. In particular, deep learning
+methods can automatically learn multiple levels of representations exclusively from its input data,
+without the need of additional user input. Although their applications in drug repurposing are still in the
+infancy stage, they have already shown great potential (Figure 1).
