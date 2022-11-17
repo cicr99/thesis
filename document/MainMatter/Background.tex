@@ -23,9 +23,11 @@ Existen numerosos ejemplos de reposicionamiento de medicamentos de forma exitosa
 
 Como se puede apreciar, la reutilización de medicamentos no constituye una idea nueva en el campo de la medicina; sin embargo, como estrategia explícita de desarrollo, ha tenido auge en los últimos años. De hecho, datos obtenidos de \textit{PubMed} muestran que el número de publicaciones relacionadas con el reposicionamiento de medicamentos ha aumentado de forma exponencial desde 2004 [\cite{advances}]. Esto se debe, en parte, a la acumulación de grandes volúmenes de datos que permiten la implementación de enfoques computacionales. Las fuentes de información populares incluyen: registros de salud electrónicos, análisis de asociación de todo el genoma o perfiles de expresión génica, estructuras compuestas y otros datos de perfiles fenotípicos. La tabla (AÑADIR REFERENCIA A TABLA) muestra algunas de las bases de datos utilizadas con mayor frecuencia en la actualidad [\cite{databases}].
 
+En cuanto a literatura, PubMed [\cite{pubmed}] constituye la base de datos más utilizada [\cite{xue}]. Esta comprende más de $34$ millones de citas de literatura biomédica de MEDLINE, revistas de ciencias biológicas y libros en línea.
+
 \section{Enfoques computacionales para el reposicionamiento de medicamentos}
 
-El problema principal en el reposicionamiento de medicamentos es la detección de nuevas relaciones entre medicamentos y enfermedades. Para abordar dicho problema, se han desarrollado una variedad de enfoques que incluyen enfoques computacionales, enfoques experimentales biológicos y enfoques mixtos. [\cite{hanqing}]
+El problema principal en el reposicionamiento de medicamentos es la detección de nuevas relaciones entre medicamentos y enfermedades. Para abordar dicho problema, se han desarrollado una variedad de enfoques que incluyen enfoques computacionales, enfoques experimentales biológicos y enfoques mixtos. [\cite{xue}]
 
 Dado el crecimiento de la cantidad de datos biomédicos y farmacéuticos a gran escala disponibles públicamente, los enfoques computacionales que utilizan minería de datos, aprendizaje automático y análisis de redes se vuelven cada vez más importantes [\cite{jarada}]. Se pudiera asumir que los ensayos experimentales biológicos son más confiables y predictivos en comparación; sin embargo, las condiciones de experimentación, la cantidad de concentraciones probadas y la cantidad de repeticiones pueden influir en la precisión de los resultados. Además, en contraste, los enfoques computacionales son de menor costo y presentan menos limitaciones. [\cite{oprea}]
 
@@ -33,11 +35,11 @@ Dado el crecimiento de la cantidad de datos biomédicos y farmacéuticos a gran 
 Los enfoques computacionales existentes pueden ser clasificados de diferentes formas de acuerdo a distintos puntos de vista. Por ejemplo, algunos investigadores los agrupan de acuerdo a las redes biológicas utilizadas: redes de interacción molecular, redes reguladoras de genes, redes metabólicas, redes de interacción entre proteínas, entre otras [\cite{lotfi}]. Otra clasificación, que se enfoca en los modelos y metodologías utilizadas durante el reposicionamiento, es: métodos basados en datos y basados en hipótesis [\cite{zou}], aunque esta clasificación general puede ser aplicada a cualquier enfoque computacional. De acuerdo a las metodologías centrales utilizadas, se han dividido también en tres categorías: enfoques basados en redes, enfoques de minería de texto y enfoques semánticos [\cite{koromina}]. Este trabajo abordará la última clasificación mencionada.
 
 \subsubsection{Enfoques basados en redes}
-Los métodos basados en redes se pueden dividir en: enfoques de agrupamiento (\textit{clustering}) y enfoques de propagación [\cite{hanqing}].
+Los métodos basados en redes se pueden dividir en: enfoques de agrupamiento (\textit{clustering}) y enfoques de propagación [\cite{xue}].
 
 El propósito de los enfoques de agrupamiento basados en redes es el descubrimiento de nuevas relaciones de tipo fármaco-enfermedad o fármaco-objetivo en grupos más pequeños dentro de una red más grande. Están basados en la idea de que entidades biológicas (enfermedades, medicamentos, proteínas, etc.) que pertenecen al mismo módulo de redes, comparten características similares. Por tanto, utilizan algoritmos de \textit{cluster} para encontrar diferentes subredes(también conocidas como grupos o cliques).
 
-Por otra parte, los enfoques de propagación están basados en el flujo de conocimiento adquirido previamente a través de las diferentes capas de una red. Estos parecen ser bastante efectivos para la identificación de interconexiones de interés [\cite{emig}]. De acuerdo a la forma en que se trata la red para la obtención de información, los métodos basados en propagación se separan igualmente en dos categorías: enfoques locales, centrados en secciones de la red, y enfoques globales, que examinan la red en su totalidad. Los enfoques de propagación local toman en cuenta una cantidad de información limitada de la red, por consiguiente, fallan en algunos casos a la hora de realizar predicciones correctas [\cite{emig}]. Por el contrario, los segundos presentan un mejor desempeño.
+Por otra parte, los enfoques de propagación están basados en el flujo de conocimiento adquirido previamente a través de las diferentes capas de una red. Estos parecen ser bastante efectivos para la identificación de interconexiones de interés [\cite{emig}]. De acuerdo a la forma en que se trata la red para la obtención de información, los métodos basados en propagación se separan igualmente en dos categorías: enfoques locales, centrados en secciones de la red, y enfoques globales, que examinan la red en su totalidad. Los enfoques de propagación local toman en cuenta una cantidad de información limitada de la red, por consiguiente, fallan en algunos casos a la hora de realizar predicciones correctas [\cite{emig}]. Por el contrario, los segundos alcanzan un mejor desempeño.
 
 \subsubsection{Enfoques basados en minería de textos}
 Los enfoques basados en minería de textos explotan la gran cantidad de literatura disponible, que es filtrada posteriormente para retener solo las fuentes relevantes y extraer de ellas conocimiento para un conjunto de términos biológicos de interés. El origen de estos métodos en el campo médico se describe como el método "ABC" [\cite{weeber}]. La idea consiste en que al examinar los conceptos A, B y C, donde el concepto A está relacionado con B y B con C, es posible que exista también una conexión entre A y C. Basados en este modelo, varios métodos de minería de texto han sido propuestos para encontrar posibles relaciones enfermedad-medicamento en la literatura. Igualmente, el desarrollo de técnicas de procesamiento de lenguaje natural (\textit{NLP - Natural Language Processing}), ha influido en el incremento de la implementación de herramientas para llevar a cabo este enfoque (véase [\cite{miningapps1}, \cite{miningapps2}])
@@ -47,6 +49,41 @@ Un estudio reciente por Andronis et al. [\cite{mining}] resume varios enfoques y
 Las herramientas de minería de texto reducen la complejidad temporal del reposicionamiento de medicamentos y ayuda a los investigadores a verificar sus resultados experimentales devolviendo masivas cantidades de relaciones de entidades biológicas. Sin embargo, presenta ciertas desventajas, como es el problema de cobertura limitada. Este se debe a que entidades biomédicas o relaciones parcialmente importantes tales como mutaciones, objetivos y fármacos no son considerados.
 
 \subsubsection{Enfoques semánticos}
+Los enfoques semánticos son ampliamente utilizados para recuperación de información, recuperación de imágenes y otros campos. Recientemente, estos métodos han sido aplicados también al reposicionamiento de medicamentos. En dichos enfoques la creación de redes está determinada a partir del conocimiento biomédico previo extraído de las bases de datos y luego, se utilizan algoritmos de aprendizaje máquina (\textit{ML - Machine Learning}) para la identificación de nuevas interacciones y relaciones, presentes en estas redes [\cite{xue}]. Dado que los enfoques semánticos se aprovechan de la información semántica incluida en la gran cantidad de datos, incrementa la precisión de las predicciones de relaciones entre entidades biológicas.
 
+\section{Aplicación de aprendizaje computacional sobre grafos de conocimiento para el reposicionamiento de medicamentos}
 
-\section{Grafos de conocimiento}
+Esta sección primero introduce los conceptos básicos de grafo de conocimientos (OJO - terminar este parrafo)
+
+\subsection{Grafo de conocimientos}
+Un grafo de conocimiento (\textit{KG - Knowledge Graph}) es un multigrafo heterogéneo dirigido cuyos nodos y aristas poseen una semántica específica del dominio [\cite{dglke}]. Ellos permiten codificar el conocimiento en una forma que es sencilla de interpretar por humanos y es susceptible de análisis e inferencia automatizados.
+
+Generalmente, los grafos de conocimiento [\cite{survey}] se representan como $\mathcal{G} = \lbrace \mathcal{E}, \mathcal{R}, \mathcal{F} \rbrace$ donde:
+\begin{itemize}
+    \item \mathcal{E} denota el conjunto de entidades. Cada entidad está representada por un nodo del grafo y se refiere a un elemento que existe objetivamente y se distingue de los otros. Las entidades pueden o no ser del mismo tipo.
+    \item \mathcal{R} denota el conjunto de los tipos de relaciones. Una relación representa una conexión específica entre entidades.
+    \item \mathcal{F} denota el conjunto de hechos. Cada hecho se define como una tripleta de la forma $(h, r, t)$, donde $h$ denota la entidad sujeto o cabeza (\textit{head entity}), $r$ representa el tipo la relación y $t$ indica la entidad objeto o cola (\textit{tail entity}). Los hechos conforman las aristas del grafo.
+\end{itemize}
+
+Se define igualmente la vencidad ($N(e)$) de una entidad $e$ al conjunto de entidades que son adyacentes a ellas. Toda tripleta contenida en el grafo se considera como un hecho verdadero, mientras que aquellas que no están contenidas son consideradas hechos desconocidos, lo que se conoce como Suposición de Mundo Abierto (\textit{OWA - Open World Assumption}). [\cite{taskdriven}]
+
+Los grafos de conocimiento, como tecnología, presentan aplicaciones específicas en muchas industrias. No solo en el campo de la medicina, donde pueden proporcionar una representación visual del conocimiento para el análisis de fármacos o el diagnóstico de enfermedades [\cite{sang}, \cite{abdel}]; también, en el campo del comercio electrónico [\cite{commerce}] y en seguridad pública [\cite{security}], por ejemplo. Sin embargo, con el gran volumen de información presente en la red, los grafos de conocimiento tienden a ser de grandes dimensiones, lo que suele dificultar su manipulación. Los inconvenientes principales son [\cite{dai}]:
+
+\begin{enumerate}[label=(\roman*)]
+    \item Problemas de eficiencia computacional. Cuando se usa el grafo de conocimiento para calcular las relaciones semánticas entre entidades, a menudo es necesario diseñar un algoritmo especial sobre el grafo para conseguirlo. No obstante, este suele tener una alta complejidad computacional y poca escalabilidad. A medida que alcance mayor escala, resulta más difícil satisfacer las necesidades de la programación en tiempo real.
+    \item Problema de escasez de datos. Al igual que otras estructuras de datos a gran escala, el grafo de conocimiento a gran escala se enfrenta a un grave problema de dispersión en los datos, lo que provoca que el cálculo de las relaciones semánticas o inferenciales de las entidades sea extremadamente inexacto.
+\end{enumerate}
+    
+\subsection{Aprendizaje para representación de grafos}
+
+Para abordar el desafío previamente mencionado, ha atraído mucha atención la técnica de integración (\textit{embedding}) de los grafos de conocimiento. Esta se puede definir de la siguiente forma [\cite{dai}]:
+\begin{center}
+    Dado un grafo de conocimiento y una dimensión predefinida $d$ para el espacio de embedding, el embedding del grafo de conocimiento representa cada entidad y relación en un espacio vectorial continuo de dimensión $d$, que preserva la información de estructura y propiedades del grafo.
+\end{center}
+
+La idea de este enfoque es poder calcular de manera eficiente la relación semántica entre entidades, dada su capacidad de representar el conocimiento en un espacio de características denso y de baja dimensión, resolviendo así los problemas de complejidad computacional y dispersión en los datos. Una vez obtenida esta representación, se puede utilizar además, para explorar nuevos conocimientos a partir de los hechos existentes, conocido como predicción de enlaces (que será abordado más adelante); resolución de entidades [\cite{entityres1}, \cite{entityres2}] y clasificación de relaciones [\cite{relclas1}, \cite{relclas2}]
+
+- Anatomía de los modelos para embedding de grafos
+- Modelos que se han implementado (clasificaciones)
+
+\subsection{Predicción de enlaces en los grafos de conocimiento}
