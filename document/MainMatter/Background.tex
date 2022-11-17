@@ -60,16 +60,16 @@ Un grafo de conocimiento (\textit{KG - Knowledge Graph}) es un multigrafo hetero
 
 Generalmente, los grafos de conocimiento [\cite{survey}] se representan como $\mathcal{G} = \lbrace \mathcal{E}, \mathcal{R}, \mathcal{F} \rbrace$ donde:
 \begin{itemize}
-    \item \mathcal{E} denota el conjunto de entidades. Cada entidad está representada por un nodo del grafo y se refiere a un elemento que existe objetivamente y se distingue de los otros. Las entidades pueden o no ser del mismo tipo.
-    \item \mathcal{R} denota el conjunto de los tipos de relaciones. Una relación representa una conexión específica entre entidades.
-    \item \mathcal{F} denota el conjunto de hechos. Cada hecho se define como una tripleta de la forma $(h, r, t)$, donde $h$ denota la entidad sujeto o cabeza (\textit{head entity}), $r$ representa el tipo la relación y $t$ indica la entidad objeto o cola (\textit{tail entity}). Los hechos conforman las aristas del grafo.
+    \item $\mathcal{E}$ denota el conjunto de entidades. Cada entidad está representada por un nodo del grafo y se refiere a un elemento que existe objetivamente y se distingue de los otros. Las entidades pueden o no ser del mismo tipo.
+    \item $\mathcal{R}$ denota el conjunto de los tipos de relaciones. Una relación representa una conexión específica entre entidades.
+    \item $\mathcal{F}$ denota el conjunto de hechos. Cada hecho se define como una tripleta de la forma $(h, r, t)$, donde $h$ denota la entidad sujeto o cabeza (\textit{head entity}), $r$ representa el tipo la relación y $t$ indica la entidad objeto o cola (\textit{tail entity}). Los hechos conforman las aristas del grafo.
 \end{itemize}
 
 Se define igualmente la vencidad ($N(e)$) de una entidad $e$ al conjunto de entidades que son adyacentes a ellas. Toda tripleta contenida en el grafo se considera como un hecho verdadero, mientras que aquellas que no están contenidas son consideradas hechos desconocidos, lo que se conoce como Suposición de Mundo Abierto (\textit{OWA - Open World Assumption}). [\cite{taskdriven}]
 
 Los grafos de conocimiento, como tecnología, presentan aplicaciones específicas en muchas industrias. No solo en el campo de la medicina, donde pueden proporcionar una representación visual del conocimiento para el análisis de fármacos o el diagnóstico de enfermedades [\cite{sang}, \cite{abdel}]; también, en el campo del comercio electrónico [\cite{commerce}] y en seguridad pública [\cite{security}], por ejemplo. Sin embargo, con el gran volumen de información presente en la red, los grafos de conocimiento tienden a ser de grandes dimensiones, lo que suele dificultar su manipulación. Los inconvenientes principales son [\cite{dai}]:
 
-\begin{enumerate}[label=(\roman*)]
+\begin{enumerate}[i]
     \item Problemas de eficiencia computacional. Cuando se usa el grafo de conocimiento para calcular las relaciones semánticas entre entidades, a menudo es necesario diseñar un algoritmo especial sobre el grafo para conseguirlo. No obstante, este suele tener una alta complejidad computacional y poca escalabilidad. A medida que alcance mayor escala, resulta más difícil satisfacer las necesidades de la programación en tiempo real.
     \item Problema de escasez de datos. Al igual que otras estructuras de datos a gran escala, el grafo de conocimiento a gran escala se enfrenta a un grave problema de dispersión en los datos, lo que provoca que el cálculo de las relaciones semánticas o inferenciales de las entidades sea extremadamente inexacto.
 \end{enumerate}
